@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Louvor, LouvoresService } from '../../core';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 /**
  * Componente principal do Pesquisador de Louvores
@@ -11,7 +12,7 @@ import { Louvor, LouvoresService } from '../../core';
 @Component({
   selector: 'app-pesquisador',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SearchBarComponent],
   templateUrl: './pesquisador.component.html',
   styleUrl: './pesquisador.component.css',
 })

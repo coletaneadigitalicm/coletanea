@@ -1,0 +1,135 @@
+/* ============================================
+   SEARCH BAR COMPONENT
+   ============================================
+   Barra de busca com input e botões
+   ============================================ */
+
+/* Container Principal */
+.search-container {
+  background: var(--background-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Input de Busca */
+.search-input {
+  width: 100%;
+  height: 44px;
+  border: 2px solid var(--gold-color);
+  outline: none;
+  font-size: var(--text-md);
+  background: var(--background-color);
+  padding: 0 16px;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+  color: var(--text-light);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.search-input::placeholder {
+  color: var(--text-light-secondary);
+  font-style: italic;
+}
+
+.search-input:focus {
+  border-color: var(--placeholder-color);
+}
+
+/* Linha de Botões */
+.search-button-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Estilos Base dos Botões */
+.search-limpar-btn,
+.search-achar-btn {
+  flex: 1 1 0;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  border: 2px solid var(--gold-color);
+  transition: filter var(--transition-fast), transform var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+/* Botão Limpar (Dourado Preenchido) */
+.search-limpar-btn {
+  background: var(--gold-color);
+  color: var(--background-color);
+}
+
+.search-limpar-btn:not(:disabled):hover {
+  filter: brightness(0.97);
+  transform: translateY(-1px);
+}
+
+.search-limpar-btn:not(:disabled):active {
+  transform: translateY(0);
+}
+
+/* Botão Pesquisar (Outline Dourado) */
+.search-achar-btn {
+  background: var(--background-color);
+  color: var(--gold-color);
+}
+
+.search-achar-btn:not(:disabled):hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.search-achar-btn:not(:disabled):active {
+  transform: translateY(0);
+}
+
+/* Estado Disabled */
+.search-limpar-btn:disabled,
+.search-achar-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* SVG Icons */
+.search-limpar-btn svg,
+.search-achar-btn svg {
+  flex-shrink: 0;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .search-container {
+    padding: 12px;
+  }
+
+  .search-input {
+    font-size: 1rem;
+  }
+
+  .search-limpar-btn,
+  .search-achar-btn {
+    font-size: 0.95rem;
+  }
+}

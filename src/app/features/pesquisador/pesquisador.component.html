@@ -3,12 +3,7 @@
   <h1 class="pesquisador-title">COLETÂNEA DIGITAL</h1>
 
   <!-- Barra de Busca -->
-  <!-- TODO: Implementar componente SearchBar na Etapa 5 -->
-  <div class="search-bar-placeholder">
-    <p style="text-align: center; color: var(--text-light-secondary); font-style: italic;">
-      [SearchBar Component - A ser implementado na Etapa 5]
-    </p>
-  </div>
+  <app-search-bar (search)="onSearch($event)" (clear)="onClear()" />
 
   <!-- Lista de Resultados -->
   <!-- TODO: Implementar componente ResultsList na Etapa 8 -->
