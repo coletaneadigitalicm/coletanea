@@ -51,12 +51,23 @@ export class EnvironmentService {
   /**
    * Constrói a URL completa para abrir um PDF no leitor
    * 
-   * @param pdfUrl URL do arquivo PDF a ser aberto
+   * @param pdfUrl URL do arquivo PDF a ser aberto (pode ser relativo ou absoluto)
    * @returns URL completa para abrir no leitor de PDF
    */
   buildPdfViewerUrl(pdfUrl: string): string {
     const baseUrl = this.getPdfViewerBaseUrl();
-    const encodedPdfUrl = encodeURIComponent(pdfUrl);
+    
+    // Se o pdfUrl for relativo, transformar em URL absoluta
+    let fullPdfUrl = pdfUrl;
+    if (!pdfUrl.startsWith('http://') && !pdfUrl.startsWith('https://')) {
+      // Pegar a origem da aplicação (ex: http://localhost:4200 ou https://coletaneadigitalicm.github.io)
+      const origin = window.location.origin;
+      // Garantir que o pdfUrl comece com /
+      const path = pdfUrl.startsWith('/') ? pdfUrl : `/${pdfUrl}`;
+      fullPdfUrl = `${origin}${path}`;
+    }
+    
+    const encodedPdfUrl = encodeURIComponent(fullPdfUrl);
     return `${baseUrl}${encodedPdfUrl}`;
   }
 
