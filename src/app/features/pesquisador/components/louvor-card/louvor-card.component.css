@@ -1,0 +1,187 @@
+/* ============================================
+   LOUVOR CARD COMPONENT
+   ============================================
+   Card individual de louvor com suporte a expansão
+   ============================================ */
+
+/* Card Principal */
+.louvor-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal) var(--transition-smooth);
+  cursor: pointer;
+  border: 1px solid var(--card-border);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* Hover States */
+.louvor-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--card-border-hover);
+}
+
+.louvor-card:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-md);
+}
+
+/* Card Expandido */
+.louvor-card.card-expanded {
+  overflow: visible;
+}
+
+/* Header do Card */
+.louvor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-sm);
+  gap: var(--spacing-sm);
+}
+
+/* Título do Louvor */
+.louvor-title {
+  font-size: var(--text-lg);
+  color: var(--text-dark);
+  margin: 0;
+  flex: 1;
+  line-height: 1.3;
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+/* Ícone de Expansão */
+.expand-icon {
+  color: var(--gold-color);
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.card-expanded .expand-icon {
+  transform: rotate(0deg);
+}
+
+/* Informações do Louvor */
+.louvor-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+/* Badge de Número */
+.louvor-numero {
+  font-weight: 600;
+  color: var(--text-dark);
+  background: var(--badge-blue-bg);
+  border-radius: var(--radius-tag);
+  padding: 0.5rem 1rem;
+  font-size: var(--text-sm);
+  display: inline-block;
+  width: fit-content;
+}
+
+/* Badges de Categoria e Classificação */
+.louvor-categoria,
+.louvor-classificacao {
+  font-size: var(--text-sm);
+  background: var(--badge-gray-bg);
+  border-radius: var(--radius-tag);
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  color: var(--text-dark);
+}
+
+/* Lista de PDFs */
+.pdfs-list {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  animation: slideDown var(--transition-normal) var(--transition-smooth);
+}
+
+/* Item de PDF */
+.pdf-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.pdf-item:hover {
+  background: #f8f9fa;
+  border-color: var(--gold-color);
+  transform: translateX(4px);
+}
+
+.pdf-item:active {
+  transform: translateX(2px);
+}
+
+/* Ícone do PDF */
+.pdf-item svg {
+  color: var(--gold-color);
+  flex-shrink: 0;
+}
+
+/* Nome do PDF */
+.pdf-name {
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+/* Tablet (≤ 960px) */
+@media (max-width: 960px) {
+  .louvor-card {
+    padding: var(--spacing-sm);
+  }
+
+  .louvor-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .louvor-card {
+    padding: 1rem;
+  }
+
+  .louvor-title {
+    font-size: 1.1rem;
+  }
+
+  .louvor-numero,
+  .louvor-categoria,
+  .louvor-classificacao {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .pdf-item {
+    padding: 0.6rem;
+  }
+
+  .pdf-name {
+    font-size: 0.85rem;
+  }
+}
