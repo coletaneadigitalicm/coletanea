@@ -1,0 +1,79 @@
+import { Injectable } from '@angular/core';
+
+/**
+ * Serviço para detectar e gerenciar informações do ambiente
+ * 
+ * Determina se a aplicação está em desenvolvimento ou produção
+ * e fornece URLs apropriadas para cada ambiente.
+ */
+@Injectable({
+  providedIn: 'root',
+})
+export class EnvironmentService {
+  /**
+   * URL do leitor de PDF em ambiente de desenvolvimento (local)
+   */
+  private readonly DEV_PDF_VIEWER_URL = 'http://localhost:4200/?url=';
+
+  /**
+   * URL do leitor de PDF em ambiente de produção (GitHub Pages)
+   */
+  private readonly PROD_PDF_VIEWER_URL =
+    'https://coletaneadigitalicm.github.io/leitor-pdf/?url=';
+
+  constructor() {}
+
+  /**
+   * Verifica se a aplicação está em ambiente de produção
+   * 
+   * @returns true se estiver em produção, false se em desenvolvimento
+   */
+  isProduction(): boolean {
+    // Verifica pelo hostname
+    const hostname = window.location.hostname;
+    
+    // Produção: GitHub Pages ou domínio customizado
+    const isGitHubPages = hostname.includes('github.io');
+    const isCustomDomain = hostname !== 'localhost' && hostname !== '127.0.0.1';
+    
+    return isGitHubPages || isCustomDomain;
+  }
+
+  /**
+   * Retorna a URL base do leitor de PDF de acordo com o ambiente
+   * 
+   * @returns URL do leitor de PDF (com placeholder para URL do arquivo)
+   */
+  getPdfViewerBaseUrl(): string {
+    return this.isProduction() ? this.PROD_PDF_VIEWER_URL : this.DEV_PDF_VIEWER_URL;
+  }
+
+  /**
+   * Constrói a URL completa para abrir um PDF no leitor
+   * 
+   * @param pdfUrl URL do arquivo PDF a ser aberto
+   * @returns URL completa para abrir no leitor de PDF
+   */
+  buildPdfViewerUrl(pdfUrl: string): string {
+    const baseUrl = this.getPdfViewerBaseUrl();
+    const encodedPdfUrl = encodeURIComponent(pdfUrl);
+    return `${baseUrl}${encodedPdfUrl}`;
+  }
+
+  /**
+   * Retorna informações sobre o ambiente atual
+   * 
+   * @returns Objeto com informações do ambiente
+   */
+  getEnvironmentInfo(): {
+    isProduction: boolean;
+    hostname: string;
+    pdfViewerUrl: string;
+  } {
+    return {
+      isProduction: this.isProduction(),
+      hostname: window.location.hostname,
+      pdfViewerUrl: this.getPdfViewerBaseUrl(),
+    };
+  }
+}
