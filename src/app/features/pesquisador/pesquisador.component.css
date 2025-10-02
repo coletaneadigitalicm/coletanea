@@ -31,12 +31,6 @@
   margin-bottom: var(--spacing-lg);
 }
 
-/* Placeholder temporário - ResultsList */
-.results-list-placeholder {
-  width: 100%;
-  margin-top: var(--spacing-md);
-}
-
 /* ========================================
    RESPONSIVIDADE
    ======================================== */

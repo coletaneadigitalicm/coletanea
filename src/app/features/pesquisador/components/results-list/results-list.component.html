@@ -1,0 +1,40 @@
+<div class="results-container">
+  <!-- Estado de Loading -->
+  @if (loading) {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p class="loading-message">Carregando...</p>
+    </div>
+  }
+
+  <!-- Estado Vazio (Nenhum resultado) -->
+  @else if (showEmptyState) {
+    <div class="empty-state">
+      <!-- Ícone de Busca -->
+      <svg
+        width="64"
+        height="64"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        class="empty-icon"
+      >
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+      
+      <h3 class="empty-title">Nenhum resultado encontrado</h3>
+      <p class="empty-message">Tente buscar com outros termos</p>
+    </div>
+  }
+
+  <!-- Lista de Resultados -->
+  @else if (showResults) {
+    <div class="results-list">
+      @for (louvor of louvores; track louvor.codigo || louvor.nome) {
+        <app-louvor-card [louvor]="louvor" />
+      }
+    </div>
+  }
+</div>
