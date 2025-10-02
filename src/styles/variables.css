@@ -1,0 +1,98 @@
+/* ============================================
+   VARIÁVEIS CSS - TEMA COLETÂNEA DIGITAL
+   ============================================
+   Baseado em: TEMA_COLETANEA_DIGITAL.md
+   Data: Outubro 2025
+   ============================================ */
+
+:root {
+  /* ========================================
+     CORES PRINCIPAIS
+     ======================================== */
+  
+  /* Background e Estrutura */
+  --background-color: #4B2D2B;        /* Marrom Escuro / Sienna Escuro */
+  --card-color: #FFF8E1;              /* Creme (papel envelhecido) */
+  --title-color: #6A2F2F;             /* Marrom Avermelhado */
+  
+  /* Dourado (Destaque) */
+  --gold-color: #D4AF37;              /* Dourado Antigo / Old Gold */
+  --placeholder-color: #F0E68C;       /* Khaki Claro / Light Khaki */
+  
+  /* Botões */
+  --btn-background-color: #6A3B39;    /* Marrom Médio */
+  
+  
+  /* ========================================
+     CORES DE SISTEMA
+     ======================================== */
+  
+  /* Texto */
+  --text-light: #FFF;                           /* Branco puro */
+  --text-light-secondary: rgba(255, 255, 255, 0.7); /* Branco 70% */
+  --text-dark: #2c3e50;                        /* Azul-cinza escuro */
+  
+  /* Cards e Elementos de Conteúdo */
+  --card-bg: #f8f9fa;                 /* Cinza muito claro */
+  --card-border: #e9ecef;             /* Cinza claro */
+  --card-border-hover: #dee2e6;       /* Cinza claro hover */
+  
+  /* Badges e Tags */
+  --badge-blue-bg: #e3f2fd;           /* Azul muito claro */
+  --badge-gray-bg: #f5f7fa;           /* Cinza azulado claro */
+  
+  
+  /* ========================================
+     SOMBRAS
+     ======================================== */
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 6px 25px rgba(0, 0, 0, 0.15);
+  --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  
+  
+  /* ========================================
+     TIPOGRAFIA
+     ======================================== */
+  
+  /* Famílias de Fontes */
+  --font-serif: 'EB Garamond', serif;
+  --font-sans: 'Open Sans', sans-serif;
+  
+  /* Tamanhos de Texto */
+  --text-xs: 0.9rem;      /* 14.4px */
+  --text-sm: 1.1rem;      /* 17.6px */
+  --text-md: 1.2rem;      /* 19.2px */
+  --text-lg: 1.4rem;      /* 22.4px */
+  --text-xl: 2rem;        /* 32px */
+  --text-2xl: 2.5rem;     /* 40px */
+  
+  
+  /* ========================================
+     ESPAÇAMENTOS
+     ======================================== */
+  
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 1rem;     /* 16px */
+  --spacing-md: 1.5rem;   /* 24px */
+  --spacing-lg: 2rem;     /* 32px */
+  
+  
+  /* ========================================
+     BORDER RADIUS
+     ======================================== */
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-tag: 0.5rem;   /* 8px */
+  
+  
+  /* ========================================
+     TRANSIÇÕES
+     ======================================== */
+  
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,12 @@
+/* ============================================
+   ESTILOS GLOBAIS - COLETÂNEA DIGITAL
+   ============================================
+   Importação de estilos do tema
+   ============================================ */
+
+/* Importar arquivos do tema */
+@import './styles/fonts.css';
+@import './styles/variables.css';
+@import './styles/theme.css';
+
+/* Estilos globais adicionais podem ser adicionados abaixo */

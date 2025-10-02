@@ -1,0 +1,43 @@
+/* ============================================
+   IMPORTAÇÃO DE FONTES
+   ============================================
+   EB Garamond: Fonte serifada clássica (títulos)
+   Open Sans: Fonte sans-serif humanista (corpo)
+   ============================================ */
+
+/* ========================================
+   GOOGLE FONTS
+   ======================================== */
+
+/* EB Garamond - Weights: 400, 500, 600, 700 */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+/* Open Sans - Weights: 300, 400, 500, 600, 700 */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+/* ========================================
+   FALLBACKS LOCAIS (OPCIONAL)
+   ======================================== */
+
+/*
+  Se você baixar as fontes localmente,
+  descomente e ajuste os caminhos abaixo:
+
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('../fonts/EBGaramond-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-stretch: 75% 100%;
+  font-style: normal;
+  font-display: swap;
+}
+*/
