@@ -1,0 +1,36 @@
+<div class="pesquisador-container">
+  <!-- Título Principal -->
+  <h1 class="pesquisador-title">COLETÂNEA DIGITAL</h1>
+
+  <!-- Barra de Busca -->
+  <!-- TODO: Implementar componente SearchBar na Etapa 5 -->
+  <div class="search-bar-placeholder">
+    <p style="text-align: center; color: var(--text-light-secondary); font-style: italic;">
+      [SearchBar Component - A ser implementado na Etapa 5]
+    </p>
+  </div>
+
+  <!-- Lista de Resultados -->
+  <!-- TODO: Implementar componente ResultsList na Etapa 8 -->
+  <div class="results-list-placeholder">
+    @if (loading) {
+      <p style="text-align: center; color: var(--text-light);">Carregando...</p>
+    } @else if (hasSearched && results.length === 0) {
+      <p style="text-align: center; color: var(--text-light);">Nenhum resultado encontrado</p>
+    } @else if (results.length > 0) {
+      <p style="text-align: center; color: var(--text-light);">
+        {{ results.length }} resultado(s) encontrado(s)
+      </p>
+      <ul style="color: var(--text-light); list-style: none; padding: 0;">
+        @for (louvor of results; track louvor.codigo || louvor.nome) {
+          <li style="padding: 0.5rem; border-bottom: 1px solid var(--gold-color);">
+            {{ louvor.nome }} 
+            @if (louvor.numero) {
+              <span>({{ louvor.numero }})</span>
+            }
+          </li>
+        }
+      </ul>
+    }
+  </div>
+</div>

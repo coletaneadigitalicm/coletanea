@@ -1,0 +1,66 @@
+/* ============================================
+   PESQUISADOR COMPONENT
+   ============================================
+   Container principal do pesquisador de louvores
+   ============================================ */
+
+/* Container Principal */
+.pesquisador-container {
+  min-height: 100vh;
+  height: auto;
+  min-width: 50vw;
+  max-width: 50vw;
+  background: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-lg);
+  overflow: visible;
+  margin: 0 auto;
+}
+
+/* Título Principal */
+.pesquisador-title {
+  color: var(--placeholder-color);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  text-align: center;
+  font-family: var(--font-serif);
+  text-shadow: var(--text-shadow);
+  letter-spacing: 2px;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Placeholders temporários */
+.search-bar-placeholder,
+.results-list-placeholder {
+  width: 100%;
+  margin-top: var(--spacing-md);
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+/* Tablet (≤ 960px) */
+@media (max-width: 960px) {
+  .pesquisador-container {
+    min-width: 80vw;
+    max-width: 80vw;
+    padding: var(--spacing-md);
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .pesquisador-container {
+    min-width: 90vw;
+    max-width: 90vw;
+    padding: var(--spacing-sm);
+  }
+
+  .pesquisador-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--spacing-md);
+  }
+}
