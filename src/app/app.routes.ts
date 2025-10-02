@@ -4,11 +4,6 @@ import { PesquisadorComponent } from './features/pesquisador/pesquisador.compone
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/pesquisador',
-    pathMatch: 'full',
-  },
-  {
-    path: 'pesquisador',
     component: PesquisadorComponent,
   },
 ];
