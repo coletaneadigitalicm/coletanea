@@ -61,6 +61,10 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "ssl": true,
+            "port": 4300
+          },
           "configurations": {
             "production": {
               "buildTarget": "coletanea:build:production"
