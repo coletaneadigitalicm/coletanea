@@ -52,15 +52,41 @@
   gap: var(--spacing-sm);
 }
 
+/* Seção do Título */
+.louvor-title-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
 /* Título do Louvor */
 .louvor-title {
   font-size: var(--text-lg);
   color: var(--text-dark);
   margin: 0;
-  flex: 1;
   line-height: 1.3;
   font-family: var(--font-sans);
   font-weight: 600;
+}
+
+/* Lista de Outros Nomes */
+.outros-nomes-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Chip de Outro Nome */
+.outro-nome-chip {
+  font-size: var(--text-sm);
+  background: var(--badge-gray-bg);
+  border-radius: var(--radius-tag);
+  padding: 0.4rem 0.8rem;
+  color: var(--text-dark);
+  font-weight: 500;
+  display: inline-block;
 }
 
 /* Ícone de Expansão */
@@ -75,53 +101,72 @@
   transform: rotate(0deg);
 }
 
-/* Informações do Louvor */
-.louvor-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: flex-start;
-}
-
-/* Badge de Número */
-.louvor-numero {
-  font-weight: 600;
-  color: var(--text-dark);
-  background: var(--badge-blue-bg);
-  border-radius: var(--radius-tag);
-  padding: 0.5rem 1rem;
-  font-size: var(--text-sm);
-  display: inline-block;
-  width: fit-content;
-}
-
-/* Badges de Categoria e Classificação */
-.louvor-categoria,
-.louvor-classificacao {
-  font-size: var(--text-sm);
-  background: var(--badge-gray-bg);
-  border-radius: var(--radius-tag);
-  padding: 0.5rem 1rem;
-  width: fit-content;
-  color: var(--text-dark);
-}
-
-/* Lista de PDFs */
-.pdfs-list {
+/* Conteúdo Expandido */
+.expanded-content {
   margin-top: var(--spacing-md);
   padding-top: var(--spacing-md);
   border-top: 1px solid var(--card-border);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--spacing-md);
   animation: slideDown var(--transition-normal) var(--transition-smooth);
 }
 
-/* Item de PDF */
-.pdf-item {
+/* Seção de Arranjos */
+.arranjos-section {
+  width: 100%;
+}
+
+/* Lista de Arranjos */
+.arranjos-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Chip de Arranjo */
+.arranjo-chip {
+  font-size: 0.9rem;
+  background: #ffffff;
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-tag);
+  padding: 0.5rem 1rem;
+  color: var(--text-dark);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.arranjo-chip:hover {
+  border-color: var(--gold-color);
+  background: #fef9f3;
+  transform: translateY(-2px);
+}
+
+.arranjo-chip.selected {
+  background: var(--gold-color);
+  border-color: var(--gold-color);
+  color: #ffffff;
+}
+
+.arranjo-chip:active {
+  transform: translateY(0);
+}
+
+/* Lista de Materiais */
+.materiais-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Item de Material */
+.material-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   padding: 0.75rem;
   background: #ffffff;
   border: 1px solid var(--card-border);
@@ -130,27 +175,35 @@
   cursor: pointer;
 }
 
-.pdf-item:hover {
+.material-item:hover {
   background: #f8f9fa;
   border-color: var(--gold-color);
   transform: translateX(4px);
 }
 
-.pdf-item:active {
+.material-item:active {
   transform: translateX(2px);
 }
 
-/* Ícone do PDF */
-.pdf-item svg {
+/* Ícone do Material */
+.material-item svg {
   color: var(--gold-color);
   flex-shrink: 0;
 }
 
-/* Nome do PDF */
-.pdf-name {
+/* Nome do Material */
+.material-name {
   color: var(--text-dark);
   font-size: 0.95rem;
   font-weight: 500;
+  flex: 1;
+}
+
+/* Categoria do Material */
+.material-category {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
 }
 
 /* ========================================

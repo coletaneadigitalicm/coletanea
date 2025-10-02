@@ -32,7 +32,7 @@
   <!-- Lista de Resultados -->
   @else if (showResults) {
     <div class="results-list">
-      @for (louvor of louvores; track louvor.codigo || louvor.nome) {
+      @for (louvor of louvores; track louvor.id) {
         <app-louvor-card [louvor]="louvor" />
       }
     </div>

@@ -1,60 +1,107 @@
 <div
   class="louvor-card"
   [class.card-expanded]="isExpanded"
-  [class.has-multiple-pdfs]="hasMultiplePdfs"
+  [class.can-expand]="canExpand"
   (click)="onCardClick()"
 >
   <!-- Header do Card -->
   <div class="louvor-header">
-    <h3 class="louvor-title">{{ louvor.nome }}</h3>
+    <div class="louvor-title-section">
+      <h3 class="louvor-title">{{ louvor.nome }}</h3>
+      
+      <!-- Outros Nomes (chips horizontais) -->
+      @if (louvor.outrosNomes && louvor.outrosNomes.length > 0) {
+        <div class="outros-nomes-list">
+          @for (outroNome of louvor.outrosNomes; track outroNome) {
+            <span class="outro-nome-chip">{{ outroNome }}</span>
+          }
+        </div>
+      }
+    </div>
 
-    <!-- Indicador de expansão (apenas se múltiplos PDFs) -->
-    @if (hasMultiplePdfs) {
+    <!-- Indicador de expansão (apenas se pode expandir) -->
+    @if (canExpand) {
       <span class="expand-icon">{{ isExpanded ? '▼' : '▶' }}</span>
     }
   </div>
 
-  <!-- Informações do Louvor -->
-  <div class="louvor-info">
-    <!-- Número -->
-    @if (louvor.numero) {
-      <div class="louvor-numero">{{ louvor.numero }}</div>
-    }
+  <!-- Conteúdo expandido -->
+  @if (isExpanded) {
+    <div class="expanded-content">
+      <!-- Lista de Arranjos (chips horizontais) -->
+      @if (louvor.arranjos && louvor.arranjos.length > 1) {
+        <div class="arranjos-section">
+          <div class="arranjos-list">
+            @for (arranjo of louvor.arranjos; track $index) {
+              <button
+                class="arranjo-chip"
+                [class.selected]="selectedArranjoIndex === $index"
+                (click)="onArranjoClick($index, $event)"
+                type="button"
+              >
+                {{ abreviarTitulo(arranjo.titulo) }}
+              </button>
+            }
+          </div>
+        </div>
+      }
 
-    <!-- Categoria -->
-    @if (louvor.categoria) {
-      <div class="louvor-categoria">{{ louvor.categoria }}</div>
-    }
+      <!-- Lista de Materiais -->
+      @if (materiais.length > 0) {
+        <div class="materiais-list">
+          @for (material of materiais; track material.url) {
+            <div class="material-item" (click)="onMaterialClick(material, $event)">
+              <!-- Ícone do Material (baseado no tipo) -->
+              @if (material.tipo === 'pdf') {
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              } @else if (material.tipo === 'audio') {
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+              } @else {
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                  <polyline points="13 2 13 9 20 9"></polyline>
+                </svg>
+              }
 
-    <!-- Classificação -->
-    @if (louvor.classificacao) {
-      <div class="louvor-classificacao">{{ louvor.classificacao }}</div>
-    }
-  </div>
-
-  <!-- Lista de PDFs (apenas quando expandido) -->
-  @if (hasMultiplePdfs && isExpanded) {
-    <div class="pdfs-list" @slideDown>
-      @for (pdf of louvor.pdfs; track pdf) {
-        <div class="pdf-item" (click)="onPdfClick(pdf, $event)">
-          <!-- Ícone de PDF -->
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="16" y1="13" x2="8" y2="13"></line>
-            <line x1="16" y1="17" x2="8" y2="17"></line>
-            <polyline points="10 9 9 9 8 9"></polyline>
-          </svg>
-
-          <!-- Nome do arquivo -->
-          <span class="pdf-name">{{ getPdfFileName(pdf) }}</span>
+              <!-- Título do Material -->
+              <span class="material-name">{{ material.titulo }}</span>
+              
+              <!-- Categoria (opcional, se quiser mostrar) -->
+              @if (material.categoria) {
+                <span class="material-category">{{ material.categoria }}</span>
+              }
+            </div>
+          }
         </div>
       }
     </div>
