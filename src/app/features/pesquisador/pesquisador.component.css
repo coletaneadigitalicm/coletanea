@@ -8,8 +8,8 @@
 .pesquisador-container {
   min-height: 100vh;
   height: auto;
-  min-width: 50vw;
-  max-width: 50vw;
+  width: 100%;
+  max-width: 50rem;
   background: var(--background-color);
   display: flex;
   flex-direction: column;
@@ -38,8 +38,6 @@
 /* Tablet (≤ 960px) */
 @media (max-width: 960px) {
   .pesquisador-container {
-    min-width: 80vw;
-    max-width: 80vw;
     padding: var(--spacing-md);
   }
 }
@@ -47,8 +45,6 @@
 /* Mobile (≤ 768px) */
 @media (max-width: 768px) {
   .pesquisador-container {
-    min-width: 90vw;
-    max-width: 90vw;
     padding: var(--spacing-sm);
   }
 

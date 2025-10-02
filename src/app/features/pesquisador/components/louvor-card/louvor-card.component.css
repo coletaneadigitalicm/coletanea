@@ -4,6 +4,12 @@
    Card individual de louvor com suporte a expansão
    ============================================ */
 
+/* Host Component */
+:host {
+  display: block;
+  width: 100%;
+}
+
 /* Card Principal */
 .louvor-card {
   background: var(--card-bg);
@@ -14,6 +20,8 @@
   cursor: pointer;
   border: 1px solid var(--card-border);
   width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
   box-sizing: border-box;
   overflow: visible;
 }

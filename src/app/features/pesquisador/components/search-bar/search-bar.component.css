@@ -4,28 +4,35 @@
    Barra de busca com input e botões
    ============================================ */
 
+/* Host Component */
+:host {
+  display: block;
+  width: 100%;
+}
+
 /* Container Principal */
 .search-container {
   background: var(--background-color);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  padding: 16px;
+  padding: 1rem;
   width: 100%;
+  max-width: 50rem;
+  margin: 0 auto var(--spacing-lg) auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: var(--spacing-lg);
+  gap: 0.75rem;
 }
 
 /* Input de Busca */
 .search-input {
   width: 100%;
-  height: 44px;
+  height: 2.75rem;
   border: 2px solid var(--gold-color);
   outline: none;
   font-size: var(--text-md);
   background: var(--background-color);
-  padding: 0 16px;
+  padding: 0 1rem;
   box-sizing: border-box;
   font-family: var(--font-sans);
   color: var(--text-light);
@@ -46,15 +53,16 @@
 .search-button-row {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   width: 100%;
 }
 
 /* Estilos Base dos Botões */
 .search-limpar-btn,
 .search-achar-btn {
-  flex: 1 1 0;
-  height: 44px;
+  flex: 1;
+  min-width: 0;
+  height: 2.75rem;
   border-radius: var(--radius-sm);
   font-size: var(--text-sm);
   border: 2px solid var(--gold-color);
@@ -64,7 +72,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.5rem;
   padding: 0;
   font-family: var(--font-sans);
   font-weight: 500;

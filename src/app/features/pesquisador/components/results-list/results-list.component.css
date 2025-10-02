@@ -4,6 +4,12 @@
    Container de resultados com estados de loading e vazio
    ============================================ */
 
+/* Host Component */
+:host {
+  display: block;
+  width: 100%;
+}
+
 /* Container Principal */
 .results-container {
   width: 100%;
