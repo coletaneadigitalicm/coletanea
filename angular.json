@@ -42,7 +42,14 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "assets": [
+                {
+                  "glob": "**/*",
+                  "input": "public",
+                  "ignore": ["assets2/**"]
+                }
+              ]
             },
             "development": {
               "optimization": false,
