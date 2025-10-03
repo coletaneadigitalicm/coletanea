@@ -11,11 +11,6 @@ import { Injectable } from '@angular/core';
 })
 export class EnvironmentService {
   /**
-   * URL do leitor de PDF em ambiente de desenvolvimento (local)
-   */
-  private readonly DEV_PDF_VIEWER_URL = 'http://localhost:4200/?url=';
-
-  /**
    * URL do leitor de PDF em ambiente de produção (GitHub Pages)
    */
   private readonly PROD_PDF_VIEWER_URL =
@@ -28,16 +23,6 @@ export class EnvironmentService {
    * 
    * @returns true se estiver em produção, false se em desenvolvimento
    */
-  isProduction(): boolean {
-    // Verifica pelo hostname
-    const hostname = window.location.hostname;
-    
-    // Produção: GitHub Pages ou domínio customizado
-    const isGitHubPages = hostname.includes('github.io');
-    const isCustomDomain = hostname !== 'localhost' && hostname !== '127.0.0.1';
-    
-    return isGitHubPages || isCustomDomain;
-  }
 
   /**
    * Retorna a URL base do leitor de PDF de acordo com o ambiente
@@ -45,7 +30,7 @@ export class EnvironmentService {
    * @returns URL do leitor de PDF (com placeholder para URL do arquivo)
    */
   getPdfViewerBaseUrl(): string {
-    return this.isProduction() ? this.PROD_PDF_VIEWER_URL : this.DEV_PDF_VIEWER_URL;
+    return this.PROD_PDF_VIEWER_URL;
   }
 
   /**
@@ -77,12 +62,10 @@ export class EnvironmentService {
    * @returns Objeto com informações do ambiente
    */
   getEnvironmentInfo(): {
-    isProduction: boolean;
     hostname: string;
     pdfViewerUrl: string;
   } {
     return {
-      isProduction: this.isProduction(),
       hostname: window.location.hostname,
       pdfViewerUrl: this.getPdfViewerBaseUrl(),
     };

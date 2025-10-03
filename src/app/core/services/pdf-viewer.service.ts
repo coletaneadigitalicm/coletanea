@@ -29,7 +29,6 @@ export class PdfViewerService {
     console.log('[PdfViewerService] Abrindo PDF:', {
       original: pdfUrl,
       viewer: viewerUrl,
-      environment: this.environmentService.isProduction() ? 'PRODUÇÃO' : 'DESENVOLVIMENTO',
     });
 
     // Abrir em nova aba

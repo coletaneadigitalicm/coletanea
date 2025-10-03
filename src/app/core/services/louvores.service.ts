@@ -25,8 +25,9 @@ export class LouvoresService {
   /**
    * Busca louvores por query
    * 
-   * Busca no nome do louvor e nos outrosNomes, tratando números adequadamente
-   * (001 = 1, 003 = 3, etc)
+  * Busca no nome do louvor e nos outrosNomes.
+  * - Se a query for numérica: trata números adequadamente (001 = 1, 003 = 3, etc)
+  * - Se a query NÃO for numérica: normaliza texto removendo acentos, deixando MAIÚSCULO e removendo caracteres especiais
    * 
    * @param query Termo de busca
    * @returns Observable com array de louvores filtrados
@@ -46,34 +47,33 @@ export class LouvoresService {
     }
 
     // Filtrar louvores
-    const queryLower = query.toLowerCase().trim();
     const queryAsNumber = this.normalizeNumber(query);
+    const isNumericQuery = queryAsNumber !== null;
+    const normalizedQueryText = isNumericQuery ? '' : this.normalizeText(query);
 
     const filtered = this.louvoresCache.filter((louvor) => {
-      // Buscar no nome
-      if (louvor.nome.toLowerCase().includes(queryLower)) {
-        return true;
+      if (!isNumericQuery) {
+        // Busca textual com normalização no nome principal
+        const nomeNorm = this.normalizeText(louvor.nome ?? '');
+        if (nomeNorm.includes(normalizedQueryText)) {
+          return true;
+        }
       }
 
       // Buscar nos outrosNomes
       return louvor.outrosNomes.some((outroNome) => {
-        const outroNomeLower = outroNome.toLowerCase();
-        
-        // Match exato ou parcial de texto
-        if (outroNomeLower.includes(queryLower)) {
-          return true;
-        }
-
-        // Se query é um número, verificar se outroNome é o mesmo número
-        // Ex: query = "1" deve matchear outroNome = "001"
-        if (queryAsNumber !== null) {
-          const outroNomeAsNumber = this.normalizeNumber(outroNome);
-          if (outroNomeAsNumber !== null && outroNomeAsNumber === queryAsNumber) {
+        if (!isNumericQuery) {
+          // Match textual normalizado
+          const outroNomeNorm = this.normalizeText(outroNome);
+          if (outroNomeNorm.includes(normalizedQueryText)) {
             return true;
           }
+          return false;
         }
 
-        return false;
+        // Query é numérica: comparar como número (001 = 1)
+        const outroNomeAsNumber = this.normalizeNumber(outroNome);
+        return outroNomeAsNumber !== null && outroNomeAsNumber === queryAsNumber;
       });
     });
 
@@ -111,6 +111,22 @@ export class LouvoresService {
 
     const num = parseInt(trimmed, 10);
     return isNaN(num) ? null : num;
+  }
+
+  /**
+   * Normaliza texto para busca (apenas para buscas NÃO numéricas):
+   * - Remove acentos
+   * - Converte para MAIÚSCULAS
+   * - Remove caracteres especiais (mantém apenas A-Z, 0-9 e espaços)
+   * - Trim
+   */
+  private normalizeText(value: string): string {
+    return String(value ?? '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // Remove acentos
+      .toUpperCase()
+      .replace(/[^A-Z0-9\s]/g, '') // Remove caracteres especiais
+      .trim();
   }
 
   /**
